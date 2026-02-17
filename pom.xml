@@ -130,6 +130,17 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <inherited>true</inherited>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                        <source>21</source>
+                        <target>21</target>
+                    </configuration>
+                </plugin>
+                <plugin>
                     <groupId>org.wso2.carbon.maven</groupId>
                     <artifactId>carbon-feature-plugin</artifactId>
                     <version>${carbon.feature.plugin.version}</version>
@@ -187,6 +198,11 @@
                     </executions>
                 </plugin>
                 <plugin>
+                    <groupId>com.github.spotbugs</groupId>
+                    <artifactId>spotbugs-maven-plugin</artifactId>
+                    <version>4.9.8.2</version>
+                </plugin>
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <configuration>
@@ -227,7 +243,7 @@
         <pax.logging.api.version>2.1.0</pax.logging.api.version>
         <slf4j.logging.api.version>1.7.35</slf4j.logging.api.version>
         <testng.version>6.9.4</testng.version>
-        <jacoco.version>0.7.5.201505241946</jacoco.version>
+        <jacoco.version>0.8.12</jacoco.version>
         <orbit.version.h2.engine>1.2.140.wso2v3</orbit.version.h2.engine>
         <mockito.version>5.3.1</mockito.version>
         <commons.dbcp.version>1.4</commons.dbcp.version>
@@ -246,6 +262,7 @@
         <osgi.framework.imp.pkg.version.range>[1.7.0, 2.0.0)</osgi.framework.imp.pkg.version.range>
         <apache.felix.scr.ds.annotations.version>1.2.4</apache.felix.scr.ds.annotations.version>
         <maven.scr.plugin.version>1.22.0</maven.scr.plugin.version>
-        <spotbugs.annotations.version>4.1.4</spotbugs.annotations.version>
+        <spotbugs.annotations.version>4.9.8</spotbugs.annotations.version>
+        <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
     </properties>
 </project>
