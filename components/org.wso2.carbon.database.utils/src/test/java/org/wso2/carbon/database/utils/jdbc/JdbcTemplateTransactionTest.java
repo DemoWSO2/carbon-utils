@@ -20,8 +20,8 @@ package org.wso2.carbon.database.utils.jdbc;
 
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.testng.PowerMockTestCase;
+import org.mockito.MockitoAnnotations;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -44,8 +44,7 @@ import static org.testng.Assert.assertNull;
 /**
  * This class contains the test cases for the JdbcTemplate with transaction support.
  */
-@PrepareForTest({TransactionManager.class})
-public class JdbcTemplateTransactionTest extends PowerMockTestCase {
+public class JdbcTemplateTransactionTest {
 
     private static final String INSERT_QUERY = "INSERT INTO PURPOSE(NAME,DESCRIPTION) VALUES(?,?)";
     private static final String SELECT_QUERY = "SELECT * FROM PURPOSE;";
@@ -61,6 +60,7 @@ public class JdbcTemplateTransactionTest extends PowerMockTestCase {
     @Mock
     private DataSource mockedDataSource;
     private DataSource dataSource;
+    private AutoCloseable closeable;
 
     private static PurposeDummy mapRow(ResultSet resultSet, int rowNumber) throws SQLException {
 
@@ -74,9 +74,16 @@ public class JdbcTemplateTransactionTest extends PowerMockTestCase {
     @BeforeMethod
     public void setUp() throws Exception {
 
+        closeable = MockitoAnnotations.openMocks(this);
         JdbcTemplateTestUtils testUtils = new JdbcTemplateTestUtils();
         testUtils.initH2Database("testDB", JdbcTemplateTestUtils.getFilePath("h2.sql"));
         dataSource = testUtils.getDataSource();
+    }
+
+    @AfterMethod
+    public void tearDown() throws Exception {
+
+        closeable.close();
     }
 
     /**

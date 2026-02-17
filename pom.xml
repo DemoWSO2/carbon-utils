@@ -85,15 +85,9 @@
             </dependency>
 
             <dependency>
-                <groupId>org.powermock</groupId>
-                <artifactId>powermock-module-testng</artifactId>
-                <version>${powermock.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.powermock</groupId>
-                <artifactId>powermock-api-mockito2</artifactId>
-                <version>${powermock.version}</version>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -235,7 +229,7 @@
         <testng.version>6.9.4</testng.version>
         <jacoco.version>0.7.5.201505241946</jacoco.version>
         <orbit.version.h2.engine>1.2.140.wso2v3</orbit.version.h2.engine>
-        <powermock.version>2.0.2</powermock.version>
+        <mockito.version>5.3.1</mockito.version>
         <commons.dbcp.version>1.4</commons.dbcp.version>
         <commons.lang3.version>3.0</commons.lang3.version>
         <commons.lang.version>2.6</commons.lang.version>
