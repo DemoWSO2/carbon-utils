@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2026, WSO2 LLC. (https://www.wso2.com).
+  ~
+  ~ WSO2 LLC. licenses this file to you under the Apache License,
+  ~ Version 2.0 (the "License"); you may not use this file except
+  ~ in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied. See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+  
+<FindBugsFilter>
+    <Match>
+        <Bug pattern="THROWS_METHOD_THROWS_RUNTIMEEXCEPTION"/>
+    </Match> 
+
+    <Match>
+        <Class name="org.wso2.carbon.database.utils.jdbc.JdbcTemplate"/>
+        <Bug pattern="SQL_INJECTION_JDBC"/>
+    </Match>
+
+    <Match>
+        <Class name="org.wso2.carbon.database.utils.jdbc.JdbcTemplate"/>
+        <Bug pattern="CRLF_INJECTION_LOGS"/>
+    </Match>
+
+    <Match>
+        <Class name="org.wso2.carbon.database.utils.jdbc.JdbcTemplate"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+    
+    <Match>
+        <Class name="org.wso2.carbon.database.utils.jdbc.Template"/>
+        <Bug pattern="SQL_INJECTION_JDBC"/>
+    </Match>
+
+    <Match>
+        <Bug pattern="CRLF_INJECTION_LOGS"/>
+    </Match>
+
+    <Match>
+        <Class name="org.wso2.carbon.database.utils.jdbc.JdbcUtils"/>
+        <Bug pattern="DM_CONVERT_CASE"/>
+    </Match>
+
+    <Match>
+        <Class name="org.wso2.carbon.database.utils.jdbc.JdbcUtils"/>
+        <Bug pattern="IMPROPER_UNICODE"/>
+    </Match>
+    
+    <Match>
+        <Class name="org.wso2.carbon.database.utils.jdbc.NamedTemplate"/>
+        <Bug pattern="CRLF_INJECTION_LOGS"/>
+    </Match>
+    
+    <Match>
+        <Class name="org.wso2.carbon.database.utils.jdbc.NamedJdbcTemplate"/>
+        <Bug pattern="CRLF_INJECTION_LOGS"/>
+    </Match>
+
+    <Match>
+        <Class name="org.wso2.carbon.database.utils.jdbc.NamedJdbcTemplate"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+    
+    <Match>
+        <Class name="org.wso2.carbon.database.utils.jdbc.ExecuteCallable"/>
+        <Bug pattern="THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION"/>
+    </Match>
+    
+    <Match>
+        <Class name="org.wso2.carbon.database.utils.jdbc.NamedExecuteCallable"/>
+        <Bug pattern="THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION"/>
+    </Match>
+    
+    <Match>
+        <Class name="org.wso2.carbon.database.utils.jdbc.TransactionEntry"/>
+        <Bug pattern="EI_EXPOSE_REP"/>
+    </Match>
+
+    <Match>
+        <Class name="org.wso2.carbon.database.utils.jdbc.TransactionEntry"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+</FindBugsFilter>

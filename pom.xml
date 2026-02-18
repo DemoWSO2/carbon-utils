@@ -130,6 +130,12 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>${maven-bundle-plugin.version}</version>
+                    <extensions>true</extensions>
+                </plugin>
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
@@ -201,6 +207,13 @@
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
                     <version>4.9.8.2</version>
+                    <configuration>
+                        <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
+                        <effort>Max</effort>
+                        <threshold>Low</threshold>
+                        <failOnError>true</failOnError>
+                        <maxHeap>1024</maxHeap>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -264,5 +277,6 @@
         <maven.scr.plugin.version>1.22.0</maven.scr.plugin.version>
         <spotbugs.annotations.version>4.9.8</spotbugs.annotations.version>
         <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
+        <maven-bundle-plugin.version>5.1.9</maven-bundle-plugin.version>
     </properties>
 </project>
