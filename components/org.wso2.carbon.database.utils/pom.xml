@@ -163,7 +163,7 @@
     </build>
 
     <properties>
-        <maven.spotbugsplugin.exclude.file>findbugs-exclude.xml</maven.spotbugsplugin.exclude.file>
+        <maven.spotbugsplugin.exclude.file>../../spotbugs-exclude.xml</maven.spotbugsplugin.exclude.file>
     </properties>
 
 </project>

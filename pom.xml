@@ -208,7 +208,7 @@
                     <artifactId>spotbugs-maven-plugin</artifactId>
                     <version>4.9.8.2</version>
                     <configuration>
-                        <excludeFilterFile>spotbugs-exclude.xml</excludeFilterFile>
+                        <excludeFilterFile>${maven.spotbugsplugin.exclude.file}</excludeFilterFile>
                         <effort>Max</effort>
                         <threshold>Low</threshold>
                         <failOnError>true</failOnError>
@@ -276,6 +276,7 @@
         <apache.felix.scr.ds.annotations.version>1.2.4</apache.felix.scr.ds.annotations.version>
         <maven.scr.plugin.version>1.22.0</maven.scr.plugin.version>
         <spotbugs.annotations.version>4.9.8</spotbugs.annotations.version>
+        <maven.spotbugsplugin.exclude.file>spotbugs-exclude.xml</maven.spotbugsplugin.exclude.file>
         <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
         <maven-bundle-plugin.version>5.1.9</maven-bundle-plugin.version>
     </properties>
