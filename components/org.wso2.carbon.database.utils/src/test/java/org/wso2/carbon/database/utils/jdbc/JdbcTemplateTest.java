@@ -21,8 +21,8 @@ package org.wso2.carbon.database.utils.jdbc;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.testng.PowerMockTestCase;
+import org.mockito.MockitoAnnotations;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -36,8 +36,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.mockito.Matchers.anyString;
-import static org.powermock.api.mockito.PowerMockito.when;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 import static org.testng.Assert.assertNotNull;
@@ -46,8 +46,7 @@ import static org.testng.Assert.assertNull;
 /**
  * This class contains the test cases for JDBCTemplate without the transaction support.
  */
-@PrepareForTest({BasicDataSource.class})
-public class JdbcTemplateTest extends PowerMockTestCase {
+public class JdbcTemplateTest {
 
     private static final String DB_NAME = "TestDB";
     private static final String INSERT_QUERY = "INSERT INTO PURPOSE(NAME,DESCRIPTION) VALUES(?,?)";
@@ -71,6 +70,7 @@ public class JdbcTemplateTest extends PowerMockTestCase {
     private ResultSet mockedRes;
 
     private BasicDataSource basicDataSource;
+    private AutoCloseable closeable;
 
     @DataProvider(name = "exceptionLevelProvider")
     public static Object[][] provideExceptionLevels() {
@@ -102,6 +102,7 @@ public class JdbcTemplateTest extends PowerMockTestCase {
     @BeforeMethod
     public void setUp() throws Exception {
 
+        closeable = MockitoAnnotations.openMocks(this);
         JdbcTemplateTestUtils templateTestUtils = new JdbcTemplateTestUtils();
         templateTestUtils.initH2Database(DB_NAME, JdbcTemplateTestUtils.getFilePath("h2.sql"));
         basicDataSource = templateTestUtils.getDataSource();
@@ -115,6 +116,12 @@ public class JdbcTemplateTest extends PowerMockTestCase {
             preparedStatement.setString(1, "Initial dummy name");
             preparedStatement.setString(2, "Initial dummy description");
         }, null, false);
+    }
+
+    @AfterMethod
+    public void tearDown() throws Exception {
+
+        closeable.close();
     }
 
     @Test

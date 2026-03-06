@@ -38,7 +38,7 @@ import java.util.stream.Stream;
  *
  * @since 1.0.0
  */
-public class Utils {
+public final class Utils {
     private static final Pattern varPattern = Pattern.compile("\\$\\{([^}]*)}");
     private static final Logger logger = LoggerFactory.getLogger(Utils.class);
 

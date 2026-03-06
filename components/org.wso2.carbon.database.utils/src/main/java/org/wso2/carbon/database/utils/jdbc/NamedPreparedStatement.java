@@ -46,7 +46,7 @@ import java.util.Map;
  * Prepared statement with named indexes.
  */
 @SuppressFBWarnings(value = "SQL_INJECTION_JDBC")
-public class NamedPreparedStatement implements PreparedStatement {
+public final class NamedPreparedStatement implements PreparedStatement {
 
     private final PreparedStatement preparedStatement;
     private final List<String> fields = new ArrayList<>();

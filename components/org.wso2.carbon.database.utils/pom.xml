@@ -52,12 +52,8 @@
             <artifactId>h2-database-engine</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-module-testng</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.powermock</groupId>
-            <artifactId>powermock-api-mockito2</artifactId>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-lang</groupId>
@@ -132,7 +128,7 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>5.1.9</version>
                 <extensions>true</extensions>
                 <configuration>
                     <instructions>
@@ -167,7 +163,7 @@
     </build>
 
     <properties>
-        <maven.spotbugsplugin.exclude.file>findbugs-exclude.xml</maven.spotbugsplugin.exclude.file>
+        <maven.spotbugsplugin.exclude.file>../../spotbugs-exclude.xml</maven.spotbugsplugin.exclude.file>
     </properties>
 
 </project>

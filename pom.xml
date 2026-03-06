@@ -85,15 +85,9 @@
             </dependency>
 
             <dependency>
-                <groupId>org.powermock</groupId>
-                <artifactId>powermock-module-testng</artifactId>
-                <version>${powermock.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.powermock</groupId>
-                <artifactId>powermock-api-mockito2</artifactId>
-                <version>${powermock.version}</version>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -135,6 +129,23 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>${maven-bundle-plugin.version}</version>
+                    <extensions>true</extensions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <inherited>true</inherited>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                        <source>21</source>
+                        <target>21</target>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.wso2.carbon.maven</groupId>
                     <artifactId>carbon-feature-plugin</artifactId>
@@ -193,6 +204,18 @@
                     </executions>
                 </plugin>
                 <plugin>
+                    <groupId>com.github.spotbugs</groupId>
+                    <artifactId>spotbugs-maven-plugin</artifactId>
+                    <version>4.9.8.2</version>
+                    <configuration>
+                        <excludeFilterFile>${maven.spotbugsplugin.exclude.file}</excludeFilterFile>
+                        <effort>Max</effort>
+                        <threshold>Low</threshold>
+                        <failOnError>true</failOnError>
+                        <maxHeap>1024</maxHeap>
+                    </configuration>
+                </plugin>
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <configuration>
@@ -233,9 +256,9 @@
         <pax.logging.api.version>2.1.0</pax.logging.api.version>
         <slf4j.logging.api.version>1.7.35</slf4j.logging.api.version>
         <testng.version>6.9.4</testng.version>
-        <jacoco.version>0.7.5.201505241946</jacoco.version>
+        <jacoco.version>0.8.12</jacoco.version>
         <orbit.version.h2.engine>1.2.140.wso2v3</orbit.version.h2.engine>
-        <powermock.version>2.0.2</powermock.version>
+        <mockito.version>5.3.1</mockito.version>
         <commons.dbcp.version>1.4</commons.dbcp.version>
         <commons.lang3.version>3.0</commons.lang3.version>
         <commons.lang.version>2.6</commons.lang.version>
@@ -252,6 +275,9 @@
         <osgi.framework.imp.pkg.version.range>[1.7.0, 2.0.0)</osgi.framework.imp.pkg.version.range>
         <apache.felix.scr.ds.annotations.version>1.2.4</apache.felix.scr.ds.annotations.version>
         <maven.scr.plugin.version>1.22.0</maven.scr.plugin.version>
-        <spotbugs.annotations.version>4.1.4</spotbugs.annotations.version>
+        <spotbugs.annotations.version>4.9.8</spotbugs.annotations.version>
+        <maven.spotbugsplugin.exclude.file>spotbugs-exclude.xml</maven.spotbugsplugin.exclude.file>
+        <maven-compiler-plugin.version>3.14.1</maven-compiler-plugin.version>
+        <maven-bundle-plugin.version>5.1.9</maven-bundle-plugin.version>
     </properties>
 </project>
